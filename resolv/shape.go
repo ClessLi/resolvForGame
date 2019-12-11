@@ -1,4 +1,4 @@
-package resolvForGame
+package resolv
 
 // Shape is a basic interface that describes a Shape that can be passed to collision testing and resolution functions and
 // exist in the same Space.
