@@ -46,7 +46,7 @@ func (c *Circle) IsColliding(other Shape) bool {
 		return Distance(c.X, c.Y, closestX, closestY) <= c.Radius
 	case *Line:
 		//return b.IsColliding(c)
-		// 通过该线段与圆心作三角形，判断线段与圆是否有焦点或在圆内
+		// 通过该线段与圆心作三角形，判断线段与圆是否相交或在圆内
 		return c.isCollidingWithLine(b)
 	case *Space:
 		return b.IsColliding(c)
@@ -94,7 +94,7 @@ func (c *Circle) isCollidingWithLine(l *Line) bool {
 	p := (AC + CB + BA) / 2
 	h := 2 * math.Sqrt(p*(p-AC)*(p-CB)*(p-BA)) / BA
 
-	// 高若大于圆半径则不然不碰撞
+	// 高若大于圆半径则必然不碰撞
 	if h <= float64(c.Radius) {
 		cosC := (AC*AC + CB*CB - BA*BA) / (2 * AC * CB)
 		primaryLine := func() float64 {
